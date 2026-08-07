@@ -133,3 +133,45 @@ ul, ol {
 li {
     margin-bottom: 6px;
 }
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px 12px;
+    }
+
+    .headerh1 {
+        margin: 0 0 12px 0;
+        font-size: 1.8em;
+    }
+
+    .headerh2 {
+        margin: 0;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bodyh1 {
+        font-size: 2.8em;
+        margin: 24px 0 16px;
+    }
+
+    .conteudo {
+        padding: 12px 12px 40px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .titulo-secao {
+        font-size: 1.3em;
+    }
+
+    .bodyp {
+        font-size: 1em;
+    }
+}
