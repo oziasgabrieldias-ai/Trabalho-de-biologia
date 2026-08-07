@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Biologia</title>
+    <link rel="stylesheet" href="jogo.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" style="text-decoration: none;"><h1 class="headerh1">Jogo de Biologia</h1></a>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Quiz do Sistema Esquelético</h2>
+            <p>Responda às perguntas abaixo para testar seus conhecimentos sobre crânio, tronco e membros inferiores.</p>
+
+            <div class="dado-area">
+                <button type="button" onclick="rolarDado()">Rolar dado</button>
+                <div id="dado" class="dado">?</div>
+                <p id="mensagem-dado" class="mensagem-dado"></p>
+            </div>
+
+            <form id="quiz-form" style="display: none;">
+                <div id="perguntas-container"></div>
+                <button type="button" onclick="corrigirQuiz()">Verificar respostas</button>
+            </form>
+
+            <p id="resultado" class="resultado"></p>
+        </section>
+    </main>
+
+    <script>
+        const perguntas = [
+            {
+                pergunta: 'Qual região do corpo é responsável por proteger o encéfalo?',
+                alternativas: ['Crânio', 'Pé', 'Mão'],
+                resposta: 'Crânio'
+            },
+            {
+                pergunta: 'Qual estrutura protege coração e pulmões?',
+                alternativas: ['Caixa torácica', 'Patela', 'Fêmur'],
+                resposta: 'Caixa torácica'
+            },
+            {
+                pergunta: 'Qual é o maior osso do corpo humano?',
+                alternativas: ['Tíbia', 'Fêmur', 'Úmero'],
+                resposta: 'Fêmur'
+            },
+            {
+                pergunta: 'O que forma a articulação do quadril?',
+                alternativas: ['Acetábulo e cabeça do fêmur', 'Patela e tíbia', 'Coluna vertebral e costela'],
+                resposta: 'Acetábulo e cabeça do fêmur'
+            },
+            {
+                pergunta: 'Quantos ossos formam o crânio humano adulto?',
+                alternativas: ['20', '22', '26'],
+                resposta: '22'
+            },
+            {
+                pergunta: 'Qual é a função principal da coluna vertebral?',
+                alternativas: ['Produzir sangue', 'Proteger a medula espinal', 'Produzir saliva'],
+                resposta: 'Proteger a medula espinal'
+            },
+            {
+                pergunta: 'Qual osso é conhecido como “osso da canela”?',
+                alternativas: ['Fíbula', 'Tíbia', 'Patela'],
+                resposta: 'Tíbia'
+            },
+            {
+                pergunta: 'Qual estrutura do pé suporta o impacto inicial do passo?',
+                alternativas: ['Calcâneo', 'Úmero', 'Esterno'],
+                resposta: 'Calcâneo'
+            }
+        ];
+
+        function gerarPerguntasAleatorias() {
+            const embaralhadas = [...perguntas].sort(() => Math.random() - 0.5);
+            return embaralhadas.slice(0, 4);
+        }
+
+        function rolarDado() {
+            const valor = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('dado').textContent = valor;
+
+            const perguntasSelecionadas = gerarPerguntasAleatorias();
+            const container = document.getElementById('perguntas-container');
+            container.innerHTML = '';
+
+            perguntasSelecionadas.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'pergunta';
+                div.innerHTML = `
+                    <p><strong>${index + 1}. ${item.pergunta}</strong></p>
+                    ${item.alternativas.map((alt, i) => `<label><input type="radio" name="q${index + 1}" value="${alt}"> ${alt}</label><br>`).join('')}
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('quiz-form').style.display = 'block';
+            document.getElementById('mensagem-dado').textContent = `Você tirou ${valor} no dado! Aqui vão 4 perguntas sorteadas.`;
+            document.getElementById('resultado').textContent = '';
+        }
+
+        function corrigirQuiz() {
+            const perguntasSelecionadas = gerarPerguntasAleatorias();
+            let acertos = 0;
+
+            perguntasSelecionadas.forEach((item, index) => {
+                const resposta = document.querySelector(`input[name="q${index + 1}"]:checked`);
+                if (resposta && resposta.value === item.resposta) {
+                    acertos++;
+                }
+            });
+
+            let mensagem = '';
+            if (acertos === 4) {
+                mensagem = 'Excelente! Você acertou tudo!';
+            } else if (acertos >= 3) {
+                mensagem = 'Muito bem! Você foi quase perfeito.';
+            } else if (acertos >= 2) {
+                mensagem = 'Bom trabalho! Continue estudando.';
+            } else {
+                mensagem = 'Não desanime! Revise o conteúdo e tente outra rodada.';
+            }
+
+            document.getElementById('resultado').textContent = `Você acertou ${acertos} de 4 perguntas. ${mensagem}`;
+        }
+    </script>
+</body>
+</html>

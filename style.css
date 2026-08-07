@@ -1,0 +1,123 @@
+@charset "UTF-8";
+body {
+     margin: 0;
+    padding: 0;
+    min-height: 60%;
+    background-image: linear-gradient(to left, rgba(0, 255, 0, 0.288), rgba(68, 206, 68, 0.829));
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 60%;
+}
+
+header {
+    display: flex;
+    flex-direction: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 20px 0;
+    background-color: white;
+    text-align: right;
+    align-items:center;
+}
+
+.headerh1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: inline-block;
+    box-sizing: border-box;
+    border: solid #acce91 4px;
+    background-color:  #efeae4;
+    border-radius: 34px;
+    margin: 0 0 20px;
+    padding: 8px 16px;
+    font-size: 3.2em;
+    color:#47ad37;
+    text-shadow: 2px 2px 4px #badb73;
+    transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    box-shadow: 2px 2px 2px 2px #373737;
+    margin-left: 40px;
+}
+.headerh1:hover {
+    color: white;
+    background-color:green;
+    transform: scale(1.1);
+}
+.headerh2 {
+    display: flex;
+    flex-direction: wrap;
+    flex-wrap: wrap;
+    gap: 20px ;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    left: 700px;
+}
+.btn-h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+    text-align: right;
+    border: solid transparent 5px;
+    text-decoration: underline solid green;
+    background-color: transparent;
+
+}
+.btn-h2:hover {
+    transform: scale(1.1);
+    transform: perspective(1.2);
+}
+html, header {
+    min-width: 100%;
+    max-height: 40%;
+}
+.bodyh1 {
+    font-size: 6em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #f7f3e8;
+    text-align: center;
+    text-shadow: 2px 2px 0 #2e7d32, 4px 4px 10px rgba(0, 0, 0, 0.25);
+    letter-spacing: 1px;
+    position: relative;
+    right: 330px;
+    top: 100px;
+}
+
+.bodyp {
+    color: #2f3e2f;
+    font-size: 1.4em;
+    line-height: 1.7;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: inline-block;
+    border: 2px solid #cfe8c5;
+    background: linear-gradient(135deg, #ffffff, #f3f9ee);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
+    text-align: justify;
+    position: relative;
+    left: 1000px;
+    bottom: 200px;
+    border-radius: 24px;
+    margin: 0 20px;
+    padding: 18px 24px;
+}
+
+.bodyp::before {
+    content: "“";
+    color: #2e7d32;
+    font-size: 1.8em;
+    margin-right: 6px;
+    font-weight: bold;
+}
+
+.bodyp::after {
+    content: "”";
+    color: #2e7d32;
+    font-size: 1.8em;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+.bodyh1, .bodyp {
+    align-items: center;
+}
